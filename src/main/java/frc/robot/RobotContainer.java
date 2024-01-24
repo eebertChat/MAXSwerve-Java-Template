@@ -26,6 +26,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.util.List;
 
+
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -53,9 +54,9 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> m_robotDrive.drive(
-                -MathUtil.applyDeadband(m_stickDrive.getY()/2, OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_stickDrive.getX()/2, OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_stickDrive.getZ()/2, OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(Math.pow(m_stickDrive.getY(),3), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(Math.pow(m_stickDrive.getX(),3), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(m_stickDrive.getZ(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
   }
